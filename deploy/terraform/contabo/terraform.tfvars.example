@@ -1,0 +1,8 @@
+name                 = "uvv-unterweisungen"
+product_id           = "REPLACE_WITH_CONTABO_PRODUCT_ID"
+image_id             = "REPLACE_WITH_ALMALINUX_OR_DEBIAN_IMAGE_ID"
+region               = "EU"
+contract_months      = 1
+ssh_key_secret_ids   = [123456]
+ssh_user             = "admin"
+ssh_private_key_file = "~/.ssh/id_ed25519"

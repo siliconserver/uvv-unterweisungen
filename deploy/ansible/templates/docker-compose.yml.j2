@@ -1,0 +1,40 @@
+services:
+  uvv-unterweisungen:
+    image: ghcr.io/siliconserver/uvv-unterweisungen:${UVV_TAG}
+    container_name: uvv-unterweisungen
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      BASE_URL: "https://${DOMAIN}"
+    expose:
+      - "8000"
+    volumes:
+      - "{{ uvv_data_dir }}:/data{% if ansible_selinux.status | default('disabled') == 'enabled' %}:Z{% endif %}"
+{% if uvv_backup_enabled %}
+      - "{{ uvv_install_dir }}/backup.py:/backup.py:ro{% if ansible_selinux.status | default('disabled') == 'enabled' %}:Z{% endif %}"
+      - "{{ uvv_backup_dir }}:/backups{% if ansible_selinux.status | default('disabled') == 'enabled' %}:Z{% endif %}"
+{% endif %}
+{% if uvv_proxy_mode == 'external' %}
+    ports:
+      - "{{ uvv_bind_address }}:{{ uvv_http_port }}:8000"
+{% endif %}
+{% if uvv_proxy_mode == 'caddy' %}
+  caddy:
+    image: caddy:2
+    container_name: uvv-caddy
+    restart: unless-stopped
+    depends_on:
+      - uvv-unterweisungen
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - "{{ uvv_install_dir }}/Caddyfile:/etc/caddy/Caddyfile:ro"
+      - "uvv_caddy_data:/data"
+      - "uvv_caddy_config:/config"
+{% endif %}
+
+volumes:
+  uvv_caddy_data:
+  uvv_caddy_config:

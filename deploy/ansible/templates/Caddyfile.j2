@@ -1,0 +1,10 @@
+{% if uvv_caddy_email | length > 0 %}
+{
+  email {{ uvv_caddy_email }}
+}
+{% endif %}
+
+{{ uvv_domain }} {
+  encode zstd gzip
+  reverse_proxy uvv-unterweisungen:8000
+}

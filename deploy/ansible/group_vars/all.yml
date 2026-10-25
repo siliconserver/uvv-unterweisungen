@@ -1,0 +1,56 @@
+---
+# Public address. The app writes this host into QR-code verification URLs.
+uvv_domain: "uvv.example.org"
+
+uvv_install_dir: /opt/uvv-unterweisungen
+uvv_data_dir: /var/lib/uvv-unterweisungen/data
+uvv_backup_dir: /var/backups/uvv-unterweisungen
+uvv_image_tag: "1.1"
+uvv_http_port: 8000
+
+# caddy: Caddy runs as a container and obtains HTTPS certificates.
+# external: an existing reverse proxy forwards to this host/port.
+uvv_proxy_mode: caddy
+uvv_bind_address: 127.0.0.1
+uvv_caddy_email: ""
+
+# The app container uses UID/GID 1000 for its persistent data.
+uvv_app_uid: 1000
+uvv_app_gid: 1000
+
+uvv_admin_user: admin
+uvv_admin_password: ""
+
+# Optional mail delivery. Leave SMTP_HOST empty to disable mail.
+uvv_smtp_host: ""
+uvv_smtp_port: 587
+uvv_smtp_security: starttls
+uvv_smtp_user: ""
+uvv_smtp_password: ""
+uvv_smtp_from: ""
+uvv_mail_cooldown_minutes: 10
+uvv_default_mail_to: ""
+
+# Defaults for newly created trainings.
+uvv_pass_percent: 80
+uvv_valid_months: 12
+uvv_timezone: Europe/Berlin
+
+# These values initialize the app settings only on first startup.
+uvv_org_name: ""
+uvv_brand_top: ""
+uvv_brand_bottom: ""
+uvv_primary_color: "#BA0000"
+uvv_sign_place: ""
+uvv_impressum_url: ""
+uvv_datenschutz_url: ""
+
+# Set to the administrator's public source CIDR(s), e.g. ["198.51.100.24/32"].
+uvv_ssh_allowed_cidrs: []
+uvv_ssh_port: 22
+uvv_manage_host_firewall: true
+
+uvv_backup_enabled: true
+uvv_backup_hour: "3"
+uvv_backup_minute: "17"
+uvv_backup_retention_days: 30

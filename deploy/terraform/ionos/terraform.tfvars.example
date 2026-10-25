@@ -1,0 +1,10 @@
+name                 = "uvv-unterweisungen"
+location             = "de/fra"
+image_name           = "REPLACE_WITH_AN_IONOS_LINUX_IMAGE_ALIAS"
+ssh_public_key       = "ssh-ed25519 AAAA_REPLACE_ME admin@example"
+ssh_allowed_ipv4     = "198.51.100.24"
+ssh_user             = "root"
+ssh_private_key_file = "~/.ssh/id_ed25519"
+cores                = 2
+ram_mb               = 4096
+disk_gb              = 40

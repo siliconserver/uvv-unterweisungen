@@ -87,6 +87,10 @@ docker compose logs -f        # Strg+C zum Beenden der Anzeige
 
 Danach den Link zur Startseite an die Teilnehmer schicken.
 
+### Automatisierte Installation
+
+Terraform- und Ansible-Dateien für AlmaLinux und Debian liegen in [`deploy/`](deploy/README.md). Ansible kann sowohl neu angelegte als auch vorhandene VPS einrichten. Terraform-Beispiele für die Neuanlage gibt es derzeit für Hetzner Cloud, IONOS Cloud und Contabo; für andere Anbieter kann der vorhandene Server über Ansible eingebunden werden.
+
 ## Unterweisungen anlegen
 
 - **Inhalte** werden als einfacher Text eingegeben: Jeder Abschnitt beginnt mit `## Überschrift`, darunter ein Punkt pro Zeile mit `- `.

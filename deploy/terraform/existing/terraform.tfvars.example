@@ -1,0 +1,4 @@
+server_name          = "uvv-server"
+server_address       = "203.0.113.10"
+ssh_user             = "root"
+ssh_private_key_file = "~/.ssh/id_ed25519"
